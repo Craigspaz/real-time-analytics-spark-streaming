@@ -1,4 +1,6 @@
 #!/bin/sh
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: MIT-0
 echo "Copying EMR templates to template bucket.."
 
 aws s3 cp deployment/templates/emr-cluster-template-for-service-catalog.yaml s3://emrstudio.sample.templates/templates/

@@ -1,4 +1,6 @@
 #!/bin/sh
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: MIT-0
 if [ -z "$1"]
 then
   echo "Please provide key name as parameter."
