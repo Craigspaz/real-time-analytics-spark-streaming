@@ -200,10 +200,12 @@ emr-studio-service-catalog-setup.yaml.
 
 1. Login to the AWS CloudFormation console and copy the Amazon EMR Studio environment URL from the output section of 
 the "analytics-with-emr" stack deployed in step 1. You will use this value in the next steps.
-2. Assume the EMR Studio Admin Role to create a workspace from the AWS console, navigate to the [IAM page](https://us-east-1.console.aws.amazon.com/iam/home). Under roles, search and select the IAM role with "EMRStudioAdminRole" in its name. 
+2. Assume the EMR Studio Admin Role to create a workspace from the AWS console, navigate to the [IAM page](https://us-east-1.console.aws.amazon.com/iam/home). Under roles, search and select the IAM role with "EMRStudioAdmin" in its name.
 3. Use the link to switch (assume) roles in the console. As an alternative you can assume another role following [these instructions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-console.html) as long as you have the iam:PassRole permission.
 
 ![Assume EMR Studio Admin Role](./assets/assumeroleimage.png)
+
+Note: When you assume the EMR Studio Admin Role, you will have permissions to access EMR Studio and deploy a cluster within an EMR Studio workspace, however you will lose permissions to see the output variables from AWS Cloudformation. You can always switch back and forth to your original role if you forgot to copy any outputs.
 
 4. Once you assumed the EMR Studio Admin role, open a new tab in your browser and paste in the URL you copied from step 4 to access the EMR Studio Console. Since you assumed the EMR Studio admin role, this will be the the role used to access your Amazon EMR Studio environment.
 5. Create a new Amazon EMR Studio Workspace. [You can find detailed instructions here.](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-studio-configure-workspace.html#emr-studio-create-workspace)
