@@ -93,6 +93,14 @@ You will need a non-production AWS Account in which you have privileges to launc
 ### Operating System
 To execute any of the CLI commands referenced in this guidance, you can install the AWS CLI using these instructions. [Install or update to the latest version of the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
 
+### Working with sensitive information (e.g. PII)
+This guidance provides Amazon CloudFormation templates that configure encryption at rest with [AWS KMS](https://aws.amazon.com/kms/) SSE for EMR cluster EBS volumes and the guidance target Amazon S3 bucket. 
+When implementing ingestion of sensitive data we also recommend to configure encryption in transit in your AWS EMR cluster by providing the required certificate
+information within the AWS EMR security configuration. Sample configuration is commented out within the [emr-cluster-template-for-service-catalog.yaml](deployment%2Ftemplates%2Femr-cluster-template-for-service-catalog.yaml) template as a reference. 
+See [Best Practices for Securing Amazon EMR](https://aws.amazon.com/blogs/big-data/best-practices-for-securing-amazon-emr/Prior) for more details. 
+
+Prior to any production deployment of this guidance, you should work with your local security team to review and verify any additional security controls that should be in place for your use case. 
+
 ## Deployment Steps
 
 ### 1. Deploy EMR Studio Environment
@@ -243,7 +251,8 @@ Note: The sample cluster template has been enabled with a 24 hour idle protectio
 "AWS::EMR::InstanceFleetConfig" resource. As workaround re-attempt to delete the stack one more time and ignore the 
 EMRTaskSpot.  The stack should delete on the second try.
 - During cleanup of the Amazon EMR Studio Stack AWS CloudFormation fails to delete the nested Network stack due to a
-  dependency in EMRServiceAccessSecurityGroup. To delete, remove all ingress rules and then proceed to delete the stack.
+dependency in EMRServiceAccessSecurityGroup. This is a known issue due to AWS EMR requirement for self referencing 
+security group self referencing. To delete, remove all ingress rules from security group and then proceed to delete the stack.
 
 **Additional considerations**
 
