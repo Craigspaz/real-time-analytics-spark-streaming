@@ -97,7 +97,7 @@ To execute any of the CLI commands referenced in this guidance, you can install 
 This guidance provides Amazon CloudFormation templates that configure encryption at rest with [AWS KMS](https://aws.amazon.com/kms/) SSE for EMR cluster EBS volumes and the guidance target Amazon S3 bucket. 
 When implementing ingestion of sensitive data we also recommend to configure encryption in transit in your AWS EMR cluster by providing the required certificate
 information within the AWS EMR security configuration. Sample configuration is commented out within the [emr-cluster-template-for-service-catalog.yaml](deployment%2Ftemplates%2Femr-cluster-template-for-service-catalog.yaml) template as a reference. 
-See [Best Practices for Securing Amazon EMR](https://aws.amazon.com/blogs/big-data/best-practices-for-securing-amazon-emr/Prior) for more details. 
+See [Best Practices for Securing Amazon EMR](https://aws.amazon.com/blogs/big-data/best-practices-for-securing-amazon-emr/) for more details. 
 
 Prior to any production deployment of this guidance, you should work with your local security team to review and verify any additional security controls that should be in place for your use case. 
 
